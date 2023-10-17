@@ -1,89 +1,128 @@
-var languages = ['Javascript', 'PHP', 'Java', 'C#'];
+// // Tạo ra một mảng fruits [4] lưu trong localStorage
+// // + Thêm 1 quả 
+// // + Xóa 1 quả bất kỳ
+// // + Thay thế 1 quả bất kỳ
+// // + Tìm quả ở vị trí đầu và cuổi
+// // + Tìm quả ở vị trí giữa
+// // + Tìm các loại quả chứa chữ "a"
+// // + Kiểm tra xem trong mảng có Apple k0
+// // + Gộp thêm 2 loại quả bất kỳ ở mảng khác vào mảng fruits
+// // + Sắp xếp theo A-Z và Z-A (hof: soft)
+// var userInput = prompt(":  Nhập yêu cầu \n 1: Thêm 1 quả  \n 2: Xóa 1 quả bất kỳ ");
+
+// const fruits = ["Banana", "Apple", "Orange", "Mango"];
+
+// function save(fruits) {
+//   return localStorage.setItem("fruits", JSON.stringify(fruits));
+// }
+
+// function get(fruits) {
+//   return localStorage.getItem("fruits");
+// }
+
+// save(fruits)
 
 
-// 1. Thay the "PHP" bang "Python"
-languages[1] = 'python';
-console.log(languages);
+// // + Thêm 1 quả 
 
-// 2. Tim tu ngan nhat va dai nhat trong mang
-var longest = '';
+// switch (userInput) {
+//   case "1":
+//     fruits.push("fig");
+//     save(fruits)
+//     console.log(get(fruits))
+//     alert("Mảng đã được thêm là : " + fruits)
+//     break;
+// }
 
-for (var i = 0; i < languages.length; i++) {
-  if (languages[i].length > longest.length) {
-    longest = languages[i];
-  }
-}
-
-console.log(longest);
+// // if (userInput == '1') {
+// //   fruits.push("fig");
+// //   save(fruits)
+// //   console.log(get(fruits))
+// // }
 
 
-// 3. Tim cac tu chua chuoi "Java"
-languages.filter(function (language) {
-  return language.includes('Java');
+// // // + Xóa 1 quả bất kỳ
+// // get(fruits)
+// // fruits.splice(3, 1);
+// // save(fruits)
+
+
+// // //+ Thay thế 1 quả bất kỳ
+// // get(fruits)
+// // fruits[1] = "pineapple"
+// // save(fruits)
+
+// // // + Tìm quả ở vị trí đầu và cuổi
+// // get(fruits)
+// // firtFruit = fruits[0];
+// // lastFruit = fruits[fruits.length - 1];
+// // console.log(firtFruit)
+// // console.log(lastFruit)
+
+
+// // // + Tìm quả ở vị trí giữa
+// // get(fruits)
+// // var middle = Math.floor(fruits.length / 2);
+// // var middleFruit = fruits[middle];
+// // console.log(middleFruit);
+
+// // // + Kiểm tra xem trong mảng có Apple k0
+// // get(fruits)
+// // var isApple = fruits.includes("apple");
+// // console.log(isApple);
+
+// // // + Gộp thêm 2 loại quả bất kỳ ở mảng khác vào mảng fruits
+// // get(fruits)
+// // var otherFruits = ["watermelon", "lemon"]
+// // var newFruits = fruits.concat(otherFruits)
+// // console.log(newFruits)
+
+
+// // // + Sắp xếp theo A-Z và Z-A (hof: soft)
+// // get(fruits)
+// // var AZ = fruits.sort();
+// // // Sắp xếp mảng theo thứ tự Z-A
+
+// // save(fruits)
+
+// // console.log(AZ);
+
+var foods = ['Pizza', 'Pho Bo', 'Ramen', 'Sushi', 'Banh My'];
+
+
+// 1. Sắp xếp tăng dần và giảm dần theo số lượng ký tự
+
+var increaseFoods = foods.sort(function(a, b) {
+  return a.length - b.length;
 });
 
-// 4. Them phan tu "Dart" vao dau mang va "Kolin" vao cuoi mang
-languages.unshift('Dart');
-languages.push('Kotlin');
+console.log(increaseFoods)
 
-// 5. Hop nhat mang ban dau voi mang sau: ["Flutter","Laravel","ExpressJS",".Net"]
-var  LanguagesOther= ["Flutter", "Laravel", "ExpressJS", ".Net"];
-var NewLanguages = languages.concat(LanguagesOther);
-console.log(NewLanguages)
+// 2. Biến đổi mảng sang dạng "Pizza" => "Pizza - 5"
+var otherFoods = foods.map(function(food) {
+  return food + ' - ' + food.length;
+});
 
+console.log(otherFoods)
 
+// 3. Nhập vào các món bạn thích và thêm vào mảng
 
-///tai hien filter
-var cars = [
-    {
-      id: 1,
-      name: 'Honda',
-      price: 0,
-    },
-    {
-      id: 2,
-      name: 'Toyota',
-      price: 1000,
-    },
-    {
-      id: 3,
-      name: 'Huyndai',
-      price: 1000,
-    },
-    {
-      id: 4,
-      name: 'Jeep',
-      price: 0,
-    },
-    {
-      id: 5,
-      name: 'Subaru',
-      price: 3000,
-    },
-    {
-      id: 6,
-      name: 'Ford',
-      price: 3000,
-    },
-  ]
+var favorFoods = 'My cay, My tom';
+var NewFoods = favorFoods.split(', ');
+foods = foods.concat(NewFoods);
+console.log(foods)
 
-  Array.prototype.filter2 = function(callback){
-    var output = [];
-    for(var index in this ){
-      if(this.hasOwnProperty(index)){
-        var rerult = callback(this[index], index, this);
-        if(rerult){
-          output.push(this[index]);
-        }
-      }
-    }
-    return output;
-  }
+// 4. Tạo một mảng mới gồm các món chứa chữ "a"
+var foodsA = foods.filter(function(food) {
+  return food.includes('a');
+});
 
-var filterCar = cars.filter2(function(car,index,array){
-  return car.price > 1000;
+console.log(foodsA)
 
-})
+// 5. Tìm những món có đúng 5 ký tự
 
-console.log(filterCar)
-  
+var foods5 = foods.filter(function(food) {
+  return food.length === 5;
+});
+
+console.log(foods5)
